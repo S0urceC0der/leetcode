@@ -4,6 +4,7 @@
  *       Filename:  217.c
  *
  *    Description:  217. Contains Duplicate
+ *    本文存在简单方法O(n)实现
  *
  * =====================================================================================
  */
@@ -12,7 +13,25 @@
 #include <stdio.h>
 #include <math.h>
 
-bool containsDuplicate0(int* nums, int numsSize) {
+int containsDuplicate0(int * nums, int numsSize) {
+    int count = 1;
+    int main = nums[0];
+    int i = 0;
+    for (i = 0; i < numsSize; i++) {
+        if (count == 0) {
+            main = nums[i];
+            count = 1;
+        } else {
+            if (nums[i] == main)
+                count++;
+            else
+                count--;
+        }
+    }
+    return main;
+}
+
+bool containsDuplicat10(int* nums, int numsSize) {
     int i = 0;
     int j = 0;
     for (i = 0 ; i < numsSize; i++)
