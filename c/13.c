@@ -43,18 +43,28 @@ int romanToInt(char* s) {
     int num = 0;
     int current = 0;
     int i = 0;
+    int pre = 0;
+    /*  
+    if (s[i] != '\0') {
+        num = getNum(s[i]);
+        pre = num;
+        i++;
+    }*/
     while (s[i] != '\0') {
         current = getNum(s[i]);
-        if (current > num )
-            num = current - num;
+        if (current > pre)
+            num = current - 2 * pre + num;
         else
             num += current;
         i++;
+        pre = current;
     }
     return num;
 }
 
 int main() {
-    printf("%d", romanToInt("MCDXXXVII"));
+    printf("%d\n", romanToInt("MCDXXXVII"));
+    printf("%d\n", romanToInt("DCXXI"));
+    printf("%d\n", romanToInt("MCMXCVI"));
     return 0;
 }
